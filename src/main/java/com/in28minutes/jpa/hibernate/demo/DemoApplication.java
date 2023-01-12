@@ -23,5 +23,6 @@ public class DemoApplication implements CommandLineRunner {
 		Course course = repository.findById(1001L);
 		log.info("Course details: {}", course.toString());
 		repository.saveCourse(new Course("JPA in 200 steps"));
+		repository.playWithEntityManager();
 	}
 }

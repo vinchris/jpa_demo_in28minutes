@@ -50,4 +50,10 @@ public class CourseRepositoryTests {
         assertEquals(newCourseName,course.getName());
         assertEquals(newCourseName,courseRepository.findById(1001L).getName());
     }
+
+    @DirtiesContext
+    @Test
+    public void playWithEntityManager(){
+        courseRepository.playWithEntityManager();
+    }
 }
