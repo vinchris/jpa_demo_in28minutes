@@ -85,13 +85,23 @@ public class CourseRepository {
     }
 
     public void playWithEntityManager3() {
-        log.info("play with EM2 - start");
+        log.info("play with EM3 - start");
 
         Course course1 = new Course("Chris JPA in 100 steps");
         course1.setName(null); // used for testing, will fail at test runtime because we assigned NULL to a non-nullable @Column field
         em.persist(course1); // save the course1 entity object into the context/"database"
 
 
-        log.info("play with EM2 - end");
+        log.info("play with EM3 - end");
+    }
+
+    public void playWithEntityManager4() {
+        log.info("play with EM4 - start");
+        Course course1 = new Course("Chris JPA in 100 steps");
+        em.persist(course1);
+        Course course2 = findById(1001L);
+        course2.setName("Chris JPA in 100 steps - Updated");
+
+        log.info("play with EM4 - end");
     }
 }

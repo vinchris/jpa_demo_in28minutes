@@ -60,7 +60,7 @@ public class CourseRepositoryTests {
 
     @DirtiesContext
     @Test
-    @Disabled
+    @Disabled // disabled because this test method will always fail due to assigning NULL to a non-nullable @Column field
     public void playWithEntityManager3(){
         courseRepository.playWithEntityManager3();
     }

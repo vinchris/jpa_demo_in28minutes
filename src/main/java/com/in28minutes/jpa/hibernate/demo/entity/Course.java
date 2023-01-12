@@ -3,6 +3,10 @@ package com.in28minutes.jpa.hibernate.demo.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -15,6 +19,12 @@ public class Course {
 
     @Column(name = "fullname", nullable = false)
     private String name;
+
+    @UpdateTimestamp
+    private LocalDateTime lastUpdatedDate; // provided custom by Hibernate
+
+    @CreationTimestamp
+    private LocalDateTime createdDate; // provided custom by Hibernate
 
     public Course(String name) {
         this.name = name;

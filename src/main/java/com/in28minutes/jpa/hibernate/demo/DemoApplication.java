@@ -20,6 +20,6 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		repository.playWithEntityManager2();
+		repository.playWithEntityManager4();
 	}
 }
