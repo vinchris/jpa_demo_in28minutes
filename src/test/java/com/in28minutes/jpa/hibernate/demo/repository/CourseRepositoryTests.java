@@ -3,6 +3,7 @@ package com.in28minutes.jpa.hibernate.demo.repository;
 import com.in28minutes.jpa.hibernate.demo.DemoApplication;
 import com.in28minutes.jpa.hibernate.demo.entity.Course;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,14 @@ public class CourseRepositoryTests {
 
     @DirtiesContext
     @Test
-    public void playWithEntityManager(){
-        courseRepository.playWithEntityManager();
+    public void playWithEntityManager1(){
+        courseRepository.playWithEntityManager1();
+    }
+
+    @DirtiesContext
+    @Test
+    @Disabled
+    public void playWithEntityManager3(){
+        courseRepository.playWithEntityManager3();
     }
 }

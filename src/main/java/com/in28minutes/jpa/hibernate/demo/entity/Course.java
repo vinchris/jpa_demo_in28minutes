@@ -1,8 +1,6 @@
 package com.in28minutes.jpa.hibernate.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 
@@ -14,6 +12,8 @@ public class Course {
     @Id
     @GeneratedValue
     private Long id;
+
+    @Column(name = "fullname", nullable = false)
     private String name;
 
     public Course(String name) {

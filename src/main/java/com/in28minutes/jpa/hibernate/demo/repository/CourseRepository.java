@@ -35,8 +35,8 @@ public class CourseRepository {
         return course;
     }
 
-    public void playWithEntityManager() {
-        log.info("play with EM - start");
+    public void playWithEntityManager1() {
+        log.info("play with EM1 - start");
 
         Course course1 = new Course("Web Services in 100 steps");
         em.persist(course1); // save the course1 entity object into the context/"database"
@@ -61,6 +61,37 @@ public class CourseRepository {
         course1.setName("Web Services in 100 steps - Updated - V2"); // this update will not be persisted because the tracking of course1 was cleared
         course3.setName("Spring in 100 steps - Updated"); // this update will not be persisted because the tracking of course3 was cleared/detached
 
-        log.info("play with EM - end");
+        log.info("play with EM1 - end");
+    }
+
+
+    public void playWithEntityManager2() {
+        log.info("play with EM2 - start");
+
+        Course course1 = new Course("Chris JPA in 100 steps");
+        em.persist(course1); // save the course1 entity object into the context/"database"
+        Course course2 = new Course("Chris Hibernate in 100 steps");
+        em.persist(course2); // save the course2 entity object
+
+        em.flush(); // the changes are sent out to the database
+
+        course1.setName("Chris JPA in 100 steps - Updated");
+        course2.setName("Chris Hibernate in 100 steps - Updated");
+
+        em.refresh(course1); // refreshes the state of the instance from the database/persistence context, overwriting the previously(not-flushed) changes
+        em.flush();
+
+        log.info("play with EM2 - end");
+    }
+
+    public void playWithEntityManager3() {
+        log.info("play with EM2 - start");
+
+        Course course1 = new Course("Chris JPA in 100 steps");
+        course1.setName(null); // used for testing, will fail at test runtime because we assigned NULL to a non-nullable @Column field
+        em.persist(course1); // save the course1 entity object into the context/"database"
+
+
+        log.info("play with EM2 - end");
     }
 }
