@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 @SpringBootTest(classes = DemoApplication.class)
 @ExtendWith(SpringExtension.class)
 @Slf4j
-public class JPQLTests {
+public class JPQLTests { // JPQL works directly with the JPA entity objects not the database objects
 
     @Autowired
     EntityManager em;
