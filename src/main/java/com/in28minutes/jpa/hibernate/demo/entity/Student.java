@@ -14,6 +14,9 @@ public class Student {
     @Column(nullable = false)
     private String name;
 
+    @OneToOne
+    private Passport passport;
+
 
     public Student(String name) {
         this.name = name;
