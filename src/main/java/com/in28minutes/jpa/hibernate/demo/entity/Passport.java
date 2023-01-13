@@ -1,9 +1,6 @@
 package com.in28minutes.jpa.hibernate.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +15,9 @@ public class Passport {
 
     @Column(nullable = false)
     private String number;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private Student student;
 
 
     public Passport(String number) {
