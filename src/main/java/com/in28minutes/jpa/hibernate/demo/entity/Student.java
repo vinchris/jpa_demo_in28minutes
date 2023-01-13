@@ -14,6 +14,9 @@ public class Student {
     @Column(nullable = false)
     private String name;
 
+    @OneToOne(fetch = FetchType.LAZY) // fetch type LAZY will trigger a LazyInitializationException due to the fact that it will end the transaction before the details of student.getPassport() are retrieved
+    private Passport passport;
+
 
     public Student(String name) {
         this.name = name;

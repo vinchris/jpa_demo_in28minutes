@@ -1,4 +1,4 @@
-package com.in28minutes.jpa.hibernate.demo.repository;
+package com.in28minutes.jpa.hibernate.demo.queries;
 
 import com.in28minutes.jpa.hibernate.demo.DemoApplication;
 import com.in28minutes.jpa.hibernate.demo.entity.Course;
