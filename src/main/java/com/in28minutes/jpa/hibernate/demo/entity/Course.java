@@ -11,6 +11,9 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @ToString
+@NamedQueries(value = {
+        @NamedQuery(name = "query_get_all_courses", query = "Select c From Course c"),
+        @NamedQuery(name = "query_get_100_steps_courses", query = "Select c From Course c where c.name like :one")})
 public class Course {
 
     @Id
@@ -30,7 +33,7 @@ public class Course {
         this.name = name;
     }
 
-    protected Course(){
+    protected Course() {
     }
 
     public Long getId() {

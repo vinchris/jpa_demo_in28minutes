@@ -27,14 +27,14 @@ public class JPQLTests {
 
     @Test
     public void jpql_all_test() {
-        TypedQuery<Course> query = em.createQuery("Select c From course c", Course.class);
+        TypedQuery<Course> query = em.createNamedQuery("query_get_all_courses", Course.class);
         List<Course> resultList = query.getResultList();
         log.info(" SELECT C FROM Course C -> {}", resultList);
     }
 
     @Test
     public void jpql_where_test() {
-        TypedQuery<Course> query = em.createQuery("Select c From course c where c.name like :one", Course.class);
+        TypedQuery<Course> query = em.createNamedQuery("query_get_100_steps_courses", Course.class);
         List<Course> resultList = query.setParameter("one", "%100 steps").getResultList();
         log.info(" SELECT C FROM Course C Where name like '%100 steps' -> {}", resultList);
     }
