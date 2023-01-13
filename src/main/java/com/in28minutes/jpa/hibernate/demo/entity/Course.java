@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -28,6 +29,8 @@ public class Course {
 
     @CreationTimestamp
     private LocalDateTime createdDate; // provided custom by Hibernate
+
+    private List<Review> reviews;
 
     public Course(String name) {
         this.name = name;

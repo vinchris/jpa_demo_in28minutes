@@ -23,9 +23,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class StudentRepositoryTests {
 
     @Autowired
-    StudentRepository studentRepository;
-
-    @Autowired
     EntityManager em;
 
     /**
@@ -71,6 +68,15 @@ public class StudentRepositoryTests {
         //update student
         student.setName("Cristian - Updated");
 
+    }
+
+    @Test
+    @Transactional
+    //
+    public void retrievePassportAndAssociatedStudentTest() {
+        Passport passport = em.find(Passport.class, 4001L);
+        log.info("Passport: {}", passport);
+        log.info("Student details: {}", passport.getStudent());
     }
 
 }
