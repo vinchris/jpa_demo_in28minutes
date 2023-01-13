@@ -5,9 +5,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Passport {
 
     @Id
@@ -19,10 +21,7 @@ public class Passport {
 
 
     public Passport(String number) {
-        this.number = this.number;
-    }
-
-    protected Passport() {
+        this.number = number;
     }
 
     @Override
