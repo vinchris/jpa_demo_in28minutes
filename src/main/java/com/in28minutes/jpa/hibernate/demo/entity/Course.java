@@ -2,16 +2,19 @@ package com.in28minutes.jpa.hibernate.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
 @ToString
+@NoArgsConstructor
 @NamedQueries(value = {
         @NamedQuery(name = "query_get_all_courses", query = "Select c From Course c"),
         @NamedQuery(name = "query_get_100_steps_courses", query = "Select c From Course c where c.name like :one")})
@@ -30,28 +33,19 @@ public class Course {
     @CreationTimestamp
     private LocalDateTime createdDate; // provided custom by Hibernate
 
-    private List<Review> reviews;
+    @OneToMany(mappedBy = "course")
+    private List<Review> reviews = new ArrayList<>();
 
     public Course(String name) {
         this.name = name;
     }
 
-    protected Course() {
+    public void addReview(Review review){
+        this.reviews.add(review);
     }
 
-    public Long getId() {
-        return id;
+    public void removeReview(Review review){
+        this.reviews.remove(review);
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

@@ -1,6 +1,7 @@
 package com.in28minutes.jpa.hibernate.demo.repository;
 
 import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import com.in28minutes.jpa.hibernate.demo.entity.Review;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -103,5 +104,24 @@ public class CourseRepository {
         course2.setName("Chris JPA in 100 steps - Updated");
 
         log.info("play with EM4 - end");
+    }
+
+    public void addReviewsForCourse(){
+        log.info("get the course 1003");//
+        Course courseToBeUpdated = findById(1003L);
+        log.info("Reviews assigned to this course -> {}", courseToBeUpdated.getReviews().stream().toString());
+
+        log.info("add 2 review to it");//
+        Review review1 = new Review("5", "Very good and very detailed");
+        Review review2 = new Review("5", "Very detailed and very good");
+
+        courseToBeUpdated.addReview(review1);
+        review1.setCourse(courseToBeUpdated);
+        courseToBeUpdated.addReview(review2);
+        review2.setCourse(courseToBeUpdated);
+
+        log.info("save it to the db");//
+        em.persist(review1);
+        em.persist(review2);
     }
 }

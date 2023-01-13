@@ -1,13 +1,12 @@
 package com.in28minutes.jpa.hibernate.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Data
+@ToString
 public class Review {
 
     @Id
@@ -18,6 +17,7 @@ public class Review {
 
     private String description;
 
+    @ManyToOne
     private Course course;
 
     public Review(String rating, String description) {
@@ -29,4 +29,5 @@ public class Review {
     public String toString() {
         return String.format("Review [%s %s]", rating, description);
     }
+
 }
