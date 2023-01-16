@@ -32,6 +32,8 @@ public class DemoInheritanceApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
         employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
-        log.info("All employees ==> {}", employeeRepository.retrieveAllEmployees());
+
+        log.info("All full-time employees ==> {}", employeeRepository.retrieveAllFullTimeEmployees());
+        log.info("All part-time employees ==> {}", employeeRepository.retrieveAllPartTimeEmployees());
     }
 }
