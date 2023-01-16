@@ -72,11 +72,18 @@ public class StudentRepositoryTests {
 
     @Test
     @Transactional
-    //
     public void retrievePassportAndAssociatedStudentTest() {
         Passport passport = em.find(Passport.class, 4001L);
         log.info("Passport: {}", passport);
         log.info("Student details: {}", passport.getStudent());
+    }
+
+    @Test
+    @Transactional
+    public void retrieveStudentAndCoursesTest() {
+        Student student = em.find(Student.class, 2001L);
+        log.info("student: {}", student);
+        log.info("Student courses: {}", student.getCourses());
     }
 
 }

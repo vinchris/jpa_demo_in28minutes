@@ -1,6 +1,8 @@
 package com.in28minutes.jpa.hibernate.demo;
 
+import com.in28minutes.jpa.hibernate.demo.entity.Course;
 import com.in28minutes.jpa.hibernate.demo.entity.Review;
+import com.in28minutes.jpa.hibernate.demo.entity.Student;
 import com.in28minutes.jpa.hibernate.demo.repository.CourseRepository;
 import com.in28minutes.jpa.hibernate.demo.repository.StudentRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +29,13 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        courseRepository.addReviewsForCourse(1003L,
-                Arrays.asList(new Review("4", "good and detailed"), new Review("4", "fine and detailed")));
+//        courseRepository.addReviewsForCourse(1003L,
+//                Arrays.asList(new Review("4", "good and detailed"), new Review("4", "fine and detailed")));
+//
+//        studentRepository.insertHardcodedStudentAndCourse();
+
+        Student student = new Student("Vivi");
+        Course course = new Course("Microservices in 150 steps");
+        studentRepository.insertStudentAndCourse(student, course);
     }
 }
