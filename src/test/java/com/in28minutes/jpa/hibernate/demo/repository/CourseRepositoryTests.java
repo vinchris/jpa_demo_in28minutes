@@ -2,6 +2,9 @@ package com.in28minutes.jpa.hibernate.demo.repository;
 
 import com.in28minutes.jpa.hibernate.demo.DemoApplication;
 import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import com.in28minutes.jpa.hibernate.demo.entity.Review;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -22,6 +25,9 @@ public class CourseRepositoryTests {
     @Autowired
     CourseRepository courseRepository;
 
+    @Autowired
+    EntityManager entityManager;
+
     @Test
     public void findById_basic_test(){
         Course course = courseRepository.findById(1001L);
@@ -30,6 +36,7 @@ public class CourseRepositoryTests {
     }
 
     @Test
+    @Transactional
     @DirtiesContext
     public void deleteById_test(){
         courseRepository.deleteById(1001L);
@@ -63,5 +70,21 @@ public class CourseRepositoryTests {
     @Disabled // disabled because this test method will always fail due to assigning NULL to a non-nullable @Column field
     public void playWithEntityManager3(){
         courseRepository.playWithEntityManager3();
+    }
+
+    @Test
+    @Transactional
+    public void retrieveReviewsFromCourse(){
+
+        Course course = courseRepository.findById(1003L);
+        log.info("Reviews for this course are: " + course.getReviews());
+    }
+
+    @Test
+    @Transactional
+    public void retrieveCourseFromReview(){
+
+        Review review = entityManager.find(Review.class, 5001L);
+        log.info("Course assigned to this review is: " + review.getCourse());
     }
 }
