@@ -2,6 +2,7 @@ package com.in28minutes.jpa.hibernate.demo.repository;
 
 import com.in28minutes.jpa.hibernate.demo.entity.Course;
 import com.in28minutes.jpa.hibernate.demo.entity.Passport;
+import com.in28minutes.jpa.hibernate.demo.entity.Review;
 import com.in28minutes.jpa.hibernate.demo.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -62,6 +63,21 @@ public class StudentRepository {
 
         em.persist(student);
         em.persist(course);
+
+    }
+
+    public void insertStudentAndCourseAndReview(Student student, Course course, Review review) {
+
+        course.addStudent(student);
+        course.addReview(review);
+        student.addCourse(course);
+        student.addReview(review);
+        review.setCourse(course);
+        review.setStudent(student);
+
+        em.persist(student);
+        em.persist(course);
+        em.persist(review);
 
     }
 }

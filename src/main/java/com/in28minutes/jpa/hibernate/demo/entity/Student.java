@@ -29,6 +29,9 @@ public class Student {
     // only the owning-side entity can specify the '@JoinTable'
     private List<Course> courses = new ArrayList<>();
 
+    @OneToMany(mappedBy = "student")
+    private List<Review> reviews = new ArrayList<>();
+
 
     public Student(String name) {
         this.name = name;
@@ -39,6 +42,10 @@ public class Student {
 
     public void addCourse(Course course) {
         this.courses.add(course);
+    }
+
+    public void addReview(Review review){
+        this.reviews.add(review);
     }
 
     @Override
