@@ -1,13 +1,8 @@
 package com.in28minutes.jpa.hibernate.demo;
 
-import com.in28minutes.jpa.hibernate.demo.entity.Course;
-import com.in28minutes.jpa.hibernate.demo.entity.Review;
-import com.in28minutes.jpa.hibernate.demo.entity.Student;
 import com.in28minutes.jpa.hibernate.demo.entityWithInheritanceHierarchies.FullTimeEmployee;
 import com.in28minutes.jpa.hibernate.demo.entityWithInheritanceHierarchies.PartTimeEmployee;
-import com.in28minutes.jpa.hibernate.demo.repository.CourseRepository;
-import com.in28minutes.jpa.hibernate.demo.repository.StudentRepository;
-import com.in28minutes.jpa.hibernate.demo.repository2.EmployeeRepository;
+import com.in28minutes.jpa.hibernate.demo.repositoriesForInheritanceTypesAndMappings.EmployeeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

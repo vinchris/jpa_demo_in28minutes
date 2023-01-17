@@ -1,7 +1,5 @@
-package com.in28minutes.jpa.hibernate.demo.repository2;
+package com.in28minutes.jpa.hibernate.demo.repositoriesForInheritanceTypesAndMappings;
 
-import com.in28minutes.jpa.hibernate.demo.entity.Course;
-import com.in28minutes.jpa.hibernate.demo.entity.Review;
 import com.in28minutes.jpa.hibernate.demo.entityWithInheritanceHierarchies.Employee;
 import com.in28minutes.jpa.hibernate.demo.entityWithInheritanceHierarchies.FullTimeEmployee;
 import com.in28minutes.jpa.hibernate.demo.entityWithInheritanceHierarchies.PartTimeEmployee;
