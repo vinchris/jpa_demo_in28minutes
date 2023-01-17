@@ -4,16 +4,18 @@ import com.in28minutes.jpa.hibernate.demo.entityWithInheritanceHierarchies.Emplo
 import com.in28minutes.jpa.hibernate.demo.entityWithInheritanceHierarchies.FullTimeEmployee;
 import com.in28minutes.jpa.hibernate.demo.entityWithInheritanceHierarchies.PartTimeEmployee;
 import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 
 @Repository
-@Transactional
+@Transactional(isolation = Isolation.READ_COMMITTED)
+// different isolation levels for transaction management offered by the package org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class EmployeeRepository {
     @Autowired

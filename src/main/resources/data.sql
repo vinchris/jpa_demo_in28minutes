@@ -1,9 +1,21 @@
-insert into course(id, fullname,created_date,last_updated_date)
-values(1001, 'JPA in 50 steps',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
-insert into course(id, fullname,created_date,last_updated_date)
-values(1002, 'JPA in 100 steps',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
-insert into course(id, fullname,created_date,last_updated_date)
-values(1003, 'JPA in 150 steps',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+insert into course(id, name,created_date,last_updated_date)
+values(1001, 'Data JPA in 50 steps',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+insert into course(id, name,created_date,last_updated_date)
+values(1002, 'Spring JPA in 100 steps',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+insert into course(id, name,created_date,last_updated_date)
+values(1003, 'Hibernate in 150 steps',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+insert into course(id, name,created_date,last_updated_date)
+values(1004, 'Dummy Course 1',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+insert into course(id, name,created_date,last_updated_date)
+values(1005, 'Dummy Course 2',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+insert into course(id, name,created_date,last_updated_date)
+values(1006, 'Dummy Course 3',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+insert into course(id, name,created_date,last_updated_date)
+values(1007, 'Dummy Course 4',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+insert into course(id, name,created_date,last_updated_date)
+values(1008, 'Dummy Course 5',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+insert into course(id, name,created_date,last_updated_date)
+values(1009, 'Dummy Course 6',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
 
 insert into passport (id, number) values(4001, 'E1234567');
 insert into passport (id, number) values(4002, 'E1234568');
