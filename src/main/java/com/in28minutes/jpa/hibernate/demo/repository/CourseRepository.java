@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 @Transactional
@@ -123,5 +125,20 @@ public class CourseRepository {
         log.info("save it to the db");//
         em.persist(review1);
         em.persist(review2);
+    }
+
+    public void addReviewsForCourse(Long courseId, List<Review> reviews){
+        log.info("get the course {}", courseId);//
+        Course courseToBeUpdated = findById(courseId);
+        log.info("Reviews assigned to this course -> {}", courseToBeUpdated.getReviews().stream().toString());
+
+
+        log.info("add {} review/s to it", reviews.size());//
+        for(Review review: reviews){
+            courseToBeUpdated.addReview(review);
+            review.setCourse(courseToBeUpdated);
+            log.info("save it to the db");//
+            em.persist(review);
+        }
     }
 }

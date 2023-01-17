@@ -24,7 +24,7 @@ public class Course {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "fullname", nullable = false)
+    @Column(nullable = false)
     private String name;
 
     @UpdateTimestamp
@@ -36,16 +36,27 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private List<Review> reviews = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "courses")
+    private List<Student> students = new ArrayList<>();
+
     public Course(String name) {
         this.name = name;
     }
 
-    public void addReview(Review review){
+    public void addReview(Review review) {
         this.reviews.add(review);
     }
 
-    public void removeReview(Review review){
+    public void addStudent(Student student) {
+        this.students.add(student);
+    }
+
+    public void removeReview(Review review) {
         this.reviews.remove(review);
+    }
+
+    public void removeStudent(Student student) {
+        this.students.remove(student);
     }
 
 }

@@ -2,6 +2,7 @@ package com.in28minutes.jpa.hibernate.demo.repository;
 
 import com.in28minutes.jpa.hibernate.demo.entity.Course;
 import com.in28minutes.jpa.hibernate.demo.entity.Passport;
+import com.in28minutes.jpa.hibernate.demo.entity.Review;
 import com.in28minutes.jpa.hibernate.demo.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -34,12 +35,49 @@ public class StudentRepository {
         return student;
     }
 
-    public void saveStudentWithPassport(){
+    public void saveStudentWithPassport() {
         Passport passport = new Passport("V1234567");
         em.persist(passport); // we need to insert a new row into passport
 
         Student student = new Student("Vivi");
         student.setPassport(passport); // we add the OneToOne passport row reference to the new student row
         em.persist(student); // and save it
+    }
+
+    public void insertHardcodedStudentAndCourse() {
+        Student student = new Student("Cristian");
+        Course course = new Course("Microservices in 100 steps");
+        em.persist(student);
+        em.persist(course);
+
+        student.addCourse(course);
+        course.addStudent(student);
+        em.persist(student); // the second persist on the student entity is meant to save/persist the relationship
+        // between the new student and course, because student is the owning side of the relationship
+    }
+
+    public void insertStudentAndCourse(Student student, Course course) {
+
+        course.addStudent(student);
+        student.addCourse(course);
+
+        em.persist(student);
+        em.persist(course);
+
+    }
+
+    public void insertStudentAndCourseAndReview(Student student, Course course, Review review) {
+
+        course.addStudent(student);
+        course.addReview(review);
+        student.addCourse(course);
+        student.addReview(review);
+        review.setCourse(course);
+        review.setStudent(student);
+
+        em.persist(student);
+        em.persist(course);
+        em.persist(review);
+
     }
 }
